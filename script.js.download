@@ -1,0 +1,41 @@
+// Function to handle the fade-in effect on scroll
+const revealSections = () => {
+    const sections = document.querySelectorAll('.card');
+    const triggerBottom = window.innerHeight / 5 * 4;
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if(sectionTop < triggerBottom) {
+            section.style.opacity = "1";
+            section.style.transform = "translateY(0)";
+        }
+    });
+};
+
+// Initial setup for cards
+document.querySelectorAll('.card').forEach(card => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px)";
+    card.style.transition = "all 0.6s ease-out";
+});
+
+// Listen for scroll events
+window.addEventListener('scroll', revealSections);
+
+// Trigger once on load
+revealSections();
+
+// Add a simple console greeting
+console.log("Welcome to Radhika's Portfolio!");
+
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Simple alert to show interactivity
+    alert("Thank you, Radhika has received your message!");
+    
+    contactForm.reset();
+});
